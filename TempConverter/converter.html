@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Convertor</title>
+
+    <style>
+        body {
+            padding: 50px 100px;
+            height: 100vh;
+            background-image: linear-gradient(#0014ff, rgb(79 234 111));
+
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: auto;
+
+        }
+
+        .container {
+            text-align: center;
+            background-color: #0cb8ee;
+            padding: 50px;
+
+
+
+        }
+
+        .input {
+            display: inline-block;
+        }
+
+        .input-value {
+            padding: 5px 10px;
+            margin: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+
+        }
+
+        label {
+            font-size: 30px;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Temperature Convertor</h1>
+    <div class="container">
+        <div class="input">
+            <label>Celcius</label><br>
+            <input type="number" value="0" id="celcius" class="input-value">
+        </div>
+        <div class="input">
+            <label>Farenheit</label><br>
+            <input type="number" value="32" id="farenheit" class="input-value">
+        </div><br>
+        <div class="input">
+            <label>Celcius</label><br>
+            <input type="number" value="0" id="celcius1" class="input-value">
+        </div>
+        <div class="input">
+            <label>Kelvin</label><br>
+            <input type="number" value="273.15" id="kelvin" class="input-value">
+        </div>
+    </div>
+
+    <script>
+        let cel = document.getElementById("celcius");
+        let fah = document.getElementById("farenheit");
+        let cel1 = document.getElementById("celcius1");
+        let kel = document.getElementById("kelvin");
+
+        cel.addEventListener('input', function () {
+            let c = this.value;
+            let f = (c * (9 / 5)) + 32;
+            if (!Number.isInteger(f)) {
+                f = f.toFixed(4);
+            }
+            fah.value = f;
+        })
+
+        fah.addEventListener('input', function () {
+            let f = this.value;
+            let c = (f - 32) * (5 / 9);
+            if (!Number.isInteger(c)) {
+                c = c.toFixed(4);
+            }
+
+            cel.value = c;
+        })
+
+        cel1.addEventListener('input', function () {
+            let cel = this.value;
+            let k = Number(cel) + (Number(273.15));
+            kel.value = k;
+        })
+
+        kel.addEventListener('input', function () {
+            let kel = this.value;
+            let c = Number(kel) - 273.15;
+            cel1.value = c;
+        })
+
+    </script>
+</body>
+
+</html>
